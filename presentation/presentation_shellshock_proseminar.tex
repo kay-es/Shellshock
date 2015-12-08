@@ -1,0 +1,166 @@
+%% LaTeX-Beamer template for KIT design
+%% by Erik Burger, Christian Hammer
+%% title picture by Klaus Krogmann
+%%
+%% version 2.1
+%%
+%% mostly compatible to KIT corporate design v2.0
+%% http://intranet.kit.edu/gestaltungsrichtlinien.php
+%%
+%% Problems, bugs and comments to
+%% burger@kit.edu
+
+\documentclass[18pt]{beamer}
+
+%% SLIDE FORMAT
+
+% use 'beamerthemekit' for standard 4:3 ratio
+% for widescreen slides (16:9), use 'beamerthemekitwide'
+
+\usepackage{templates/beamerthemekit}
+% \usepackage{templates/beamerthemekitwide}
+
+%% TITLE PICTURE
+
+% if a custom picture is to be used on the title page, copy it into the 'logos'
+% directory, in the line below, replace 'mypicture' with the 
+% filename (without extension) and uncomment the following line
+% (picture proportions: 63 : 20 for standard, 169 : 40 for wide
+% *.eps format if you use latex+dvips+ps2pdf, 
+% *.jpg/*.png/*.pdf if you use pdflatex)
+
+%\titleimage{mypicture}
+
+%% TITLE LOGO
+
+% for a custom logo on the front page, copy your file into the 'logos'
+% directory, insert the filename in the line below and uncomment it
+
+%\titlelogo{mylogo}
+
+% (*.eps format if you use latex+dvips+ps2pdf,
+% *.jpg/*.png/*.pdf if you use pdflatex)
+
+%% TikZ INTEGRATION
+
+% use these packages for PCM symbols and UML classes
+% \usepackage{templates/tikzkit}
+% \usepackage{templates/tikzuml}
+
+% the presentation starts here
+
+\title[Short title]{Shellshock\\ With all details}
+\subtitle{Proseminar - Aktuelle IT-Sicherheitsvorfälle und Lösungsansätze}
+\author{Martin Weiss, Kay Schmitteckert}
+
+\institute{Chair for Software Design and Quality}
+
+% Bibliography
+\usepackage[utf8]{inputenc}
+\usepackage[citestyle=authoryear,bibstyle=numeric,hyperref,backend=biber]{biblatex}
+\addbibresource{templates/example.bib}
+\bibhang1em
+
+\begin{document}
+
+% change the following line to "ngerman" for German style date and logos
+\selectlanguage{ngerman}
+
+%title page
+\begin{frame}
+\titlepage
+\end{frame}
+
+%table of contents
+\begin{frame}{Outline/Gliederung}
+\tableofcontents
+\end{frame}
+
+\section{Einleitung Shellshock}
+
+\subsection{Was ist Shellshock?}
+\begin{frame}{Was ist Shellshock?}
+\begin{itemize}
+\item PCM, Citation: \cite{becker2008a} %\language
+\pause
+\item Bullet point 2
+\item \dots
+\end{itemize}
+\end{frame}
+
+\subsection{Ausmaß des Exploits}
+\begin{frame}{Ausmaß des Exploits}
+\begin{block}{Block 1}
+\begin{itemize}
+\item Bullet point 1
+\pause
+\item Bullet point 2
+\item \dots
+\end{itemize}
+\end{block}
+\end{frame}
+
+\section{Motivation}
+\subsection{Hätte Shellshock verhindert werden können?}
+\begin{frame}{Hätte Shellshock verhindert werden können?}
+\begin{exampleblock}{Möglichkeiten}
+\begin{itemize}
+\item Präventive Verteidigungsmaßnahmen
+\pause
+\item Maßnahmen gegen SQL-Injections
+\item \dots
+\end{itemize}
+\end{exampleblock}
+\end{frame}
+
+\subsubsection{Präventive Verteidigungsmaßnahmen}
+\begin{frame}{Präventive Verteidigungsmaßnahmen}
+\begin{exampleblock}{Example 1}
+\begin{itemize}
+\item Bullet point 1
+\pause
+\item Bullet point 2
+\item \dots
+\end{itemize}
+\end{exampleblock}
+\end{frame}
+
+\subsubsection{SQL-Injections}
+\begin{frame}{Example slide D}
+\begin{alertblock}{Alert 1}
+\begin{itemize}
+\item Bullet point 1
+\pause
+\item Bullet point 2
+\item \dots
+\end{itemize}
+\end{alertblock}
+\end{frame}
+
+\input{./sections/preventive_methods.tex}
+\input{./sections/solutions_sql_injections.tex}
+
+\section{Fazit & Resümee}
+\begin{frame}{Fazit & Resümee}
+\begin{exampleblock}{Möglichkeiten}
+\begin{itemize}
+\item Präventive Verteidigungsmaßnahmen
+\pause
+\item Maßnahmen gegen SQL-Injections
+\item \dots
+\end{itemize}
+\end{exampleblock}
+\end{frame}
+
+
+
+\appendix
+\beginbackup
+
+\begin{frame}[allowframebreaks]{References}
+\printbibliography
+\end{frame}
+
+\backupend
+
+\end{document}
