@@ -60,6 +60,7 @@
 \usepackage[citestyle=authoryear,bibstyle=numeric,hyperref,backend=biber]{biblatex}
 \addbibresource{templates/example.bib}
 \bibhang1em
+\setcounter{tocdepth}{1}
 
 \begin{document}
 
@@ -72,7 +73,7 @@
 \end{frame}
 
 %table of contents
-\begin{frame}{Outline/Gliederung}
+\begin{frame}{Agenda}
 \tableofcontents
 \end{frame}
 
@@ -100,8 +101,7 @@
 \end{block}
 \end{frame}
 
-\section{Motivation}
-\subsection{Hätte Shellshock verhindert werden können?}
+\section{Hätte Shellshock verhindert werden können?}
 \begin{frame}{Hätte Shellshock verhindert werden können?}
 \begin{exampleblock}{Möglichkeiten}
 \begin{itemize}
@@ -113,7 +113,7 @@
 \end{exampleblock}
 \end{frame}
 
-\subsubsection{Präventive Verteidigungsmaßnahmen}
+\subsection{Präventive Verteidigungsmaßnahmen}
 \begin{frame}{Präventive Verteidigungsmaßnahmen}
 \begin{exampleblock}{Example 1}
 \begin{itemize}
@@ -125,7 +125,7 @@
 \end{exampleblock}
 \end{frame}
 
-\subsubsection{SQL-Injections}
+\subsection{SQL-Injections}
 \begin{frame}{Example slide D}
 \begin{alertblock}{Alert 1}
 \begin{itemize}
@@ -140,8 +140,8 @@
 \input{./sections/preventive_methods.tex}
 \input{./sections/solutions_sql_injections.tex}
 
-\section{Fazit & Resümee}
-\begin{frame}{Fazit & Resümee}
+\section{Fazit und Resümee}
+\begin{frame}{Fazit und Resümee}
 \begin{exampleblock}{Möglichkeiten}
 \begin{itemize}
 \item Präventive Verteidigungsmaßnahmen
