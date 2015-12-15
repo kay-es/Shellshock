@@ -77,32 +77,58 @@
 \tableofcontents
 \end{frame}
 
-\section{Einleitung Shellshock}
-
-\subsection{Was ist Shellshock?}
-\begin{frame}{Was ist Shellshock?}
-\begin{itemize}
-\item PCM, Citation: \cite{becker2008a} %\language
-\pause
-\item Bullet point 2
-\item \dots
-\end{itemize}
+\section{Shellshock}
+\begin{frame}{Shellshock}
+\begin{block}{Was ist Shellshock?}
+  \begin{itemize}
+    \item Bash Sicherheitslücke
+    \item Entdeckung September 2014
+    \item Existiert seit 1989
+    \item CVE-Nummern CVE-2014-6271, -7169, -7168, -7187, -6277, -6278
+    \item 3 Patches bis zur Behebung
+  \end{itemize}
+\end{block}
 \end{frame}
 
-\subsection{Ausmaß des Exploits}
-\begin{frame}{Ausmaß des Exploits}
-\begin{block}{Block 1}
+\begin{frame}{Shellshock}
+\begin{block}{Ausmaß des Exploits}
 \begin{itemize}
-\item Bullet point 1
-\pause
-\item Bullet point 2
-\item \dots
+\item Bash Standard-Shell bei vielen unixoiden Systemen
+\item Großteil der Webserver laufen unter unixoiden Systemen
+\item Weltweit waren hunterte Millionen Computer betroffen
+\begin{itemize}
+  \item Unter anderem Server von Yahoo, Winzip und Lycos
+\end{itemize}
+\item Forscher halten die Sicherheitslücke für gravierender als Heartbleed
 \end{itemize}
 \end{block}
 \end{frame}
 
-\section{Hätte Shellshock verhindert werden können?}
-\begin{frame}{Hätte Shellshock verhindert werden können?}
+\begin{frame}{Ungepatchte Bash}
+\begin{figure}
+  \centering
+    \includegraphics[width=1\textwidth]{assets/example1}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Ungepatchte Bash}
+\begin{figure}
+  \centering
+    \includegraphics[width=1\textwidth]{assets/example2}
+\end{figure}
+\end{frame}
+
+\section{Hätte man Shellshock vorbeugen können?}
+\begin{frame}{Vorbeugung von Shellshock möglich?}
+\begin{center}
+\begin{Huge}
+Ja!
+\end{Huge}
+\end{center}
+\end{frame}
+
+\section{Hätte man Shellshock vorbeugen können?}
+\begin{frame}{Vorbeugung von Shellshock möglich?}
 \begin{exampleblock}{Möglichkeiten}
 \begin{itemize}
 \item Präventive Verteidigungsmaßnahmen
@@ -113,31 +139,8 @@
 \end{exampleblock}
 \end{frame}
 
-\subsection{Präventive Verteidigungsmaßnahmen}
-\begin{frame}{Präventive Verteidigungsmaßnahmen}
-\begin{exampleblock}{Example 1}
-\begin{itemize}
-\item Bullet point 1
-\pause
-\item Bullet point 2
-\item \dots
-\end{itemize}
-\end{exampleblock}
-\end{frame}
-
-\subsection{SQL-Injections}
-\begin{frame}{Example slide D}
-\begin{alertblock}{Alert 1}
-\begin{itemize}
-\item Bullet point 1
-\pause
-\item Bullet point 2
-\item \dots
-\end{itemize}
-\end{alertblock}
-\end{frame}
-
 \input{./sections/preventive_methods.tex}
+
 \input{./sections/solutions_sql_injections.tex}
 
 \section{Fazit und Resümee}
@@ -151,16 +154,5 @@
 \end{itemize}
 \end{exampleblock}
 \end{frame}
-
-
-
-\appendix
-\beginbackup
-
-\begin{frame}[allowframebreaks]{References}
-\printbibliography
-\end{frame}
-
-\backupend
 
 \end{document}
