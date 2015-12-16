@@ -20,7 +20,7 @@
                 \begin{itemize}
                         \item Zugriffskontrolle kann eine Schicht sein
                         \pause
-                        \item Zentrale Frage: Wer darf auf welche Daten lesen, schreiben, ausführen?
+                        \item Zentrale Frage: Wer darf welche Daten lesen, schreiben, ausführen?
                         \pause
                         \item Drei grundlegene Modelle:
                         \pause
@@ -58,9 +58,23 @@
 \begin{frame}{Präventive Verteidigungsmaßnahmen}
         \begin{block}{Docker}
                 \begin{itemize}
-                        \item blabla...
+                        \item Was sind Container?
+                        \begin{itemize}
+                                \item \textbf{\gqq{$\sim$chroot on steroids}}
+                                \item Ein Set von Prozessen
+                                \item Isoliert\footnotemark vom Rest der Maschine
+                                \item Per \textit{namespaces} eigene private Resourcen
+                                \item Per \textit{cgroups} Limitierung von Resourcen möglich
+                        \end{itemize}
+                        \item Container: Gibt es seit Jahrzehnten
+                        \item LXC (Linux Container): Gibt es seit Jahren
+                        \item $\rightarrow$ Docker vereinfacht die Verwendung von LXC 
                 \end{itemize}
         \end{block}
+
+        \setbeamerfont{footnote}{size=\tiny}
+        \footnotetext{This is my footnote!}
+        \setbeamerfont{footnote}{size=\footnotesize}
 \end{frame}
 
 \begin{frame}{Präventive Verteidigungsmaßnahmen}
