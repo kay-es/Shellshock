@@ -5,11 +5,9 @@
 
 \begin{frame}{Präventive Verteidigungsmaßnahmen}
         \begin{block}{Mehrschichtige Sicherheitsstrukturen}
-                \begin{itemize}
+                \begin{itemize}[<+->]
                         \item Experten: Sicherheitslücken nicht zu 100\% ausschließbar
-                        \pause
                         \item Können aber durch mehrschichtige Sicherheitsstrukturen migriert werden
-                        \pause
                         \item Torvalds: \gqq{The only real solution to security is to admit that bugs happen, and then mitigate them by having multiple layers, so if you have a hole in one component, the next layer will catch the issue.} 
                 \end{itemize}
         \end{block}
@@ -17,18 +15,13 @@
 
 \begin{frame}{Präventive Verteidigungsmaßnahmen}
         \begin{block}{Zugriffskontrolle}
-                \begin{itemize}
+                \begin{itemize}[<+->]
                         \item Zugriffskontrolle kann eine Schicht sein
-                        \pause
                         \item Zentrale Frage: Wer darf welche Daten lesen, schreiben, ausführen?
-                        \pause
                         \item Drei grundlegene Modelle:
-                        \pause
-                        \begin{itemize}
+                        \begin{itemize}[<+->]
                                 \item Mandatory Access Control (MAC)
-                                \pause
                                 \item Discretionary Access Control (DAC)
-                                \pause
                                 \item Role-based Access Control (RBAC)
                         \end{itemize}
                 \end{itemize}
@@ -37,11 +30,9 @@
 
 \begin{frame}{Präventive Verteidigungsmaßnahmen}
         \begin{block}{AppArmor}
-                \begin{itemize}
+                \begin{itemize}[<+->]
                         \item Einfache Umsetzung von Mandatory Access Control (MAC)
-                        \pause
                         \item Schränkt die Rechte von Applikationen ein
-                        \pause
                         \item Im Vergleich zu SELinux einfache Konfiguration
                 \end{itemize}
         \end{block}
@@ -49,33 +40,31 @@
 
 \begin{frame}{Präventive Verteidigungsmaßnahmen}
         \begin{block}{Sandboxing}
-                \begin{itemize}
-                        \item blablabla... 
+                \begin{itemize}[<+->]
+                        \item Ziel: Abgrenzung von Software und Betriebssystem
+                        \item Einsatz: BIND unter UNIX, Google's Browser Chrome, ...
+                        \item Verschiedene Möglichkeiten der Virtualisierung
                 \end{itemize}
         \end{block}
+        \begin{figure}
+                \centering
+                \includegraphics[width=0.5\textwidth]{assets/priv_rings}
+        \end{figure}
 \end{frame}
 
 \begin{frame}{Präventive Verteidigungsmaßnahmen}
         \begin{block}{Docker}
-                \begin{itemize}
+                \begin{itemize}[<+->]
                         \item Was sind Container?
-                        \pause
-                        \begin{itemize}
+                        \begin{itemize}[<+->]
                                 \item \textbf{\gqq{$\sim$chroot on steroids}}
-                                \pause
                                 \item Ein Set von Prozessen
-                                \pause
                                 \item Isoliert\footnotemark vom Rest der Maschine
-                                \pause
                                 \item Per \textit{namespaces} eigene private Resourcen
-                                \pause
                                 \item Per \textit{cgroups} Limitierung von Resourcen möglich
                         \end{itemize}
-                        \pause
                         \item Container: Gibt es seit Jahrzehnten
-                        \pause
                         \item LXC (Linux Container): Gibt es seit Jahren
-                        \pause
                         \item $\rightarrow$ Docker vereinfacht die Verwendung von LXC 
                 \end{itemize}
         \end{block}
@@ -87,7 +76,7 @@
 
 \begin{frame}{Präventive Verteidigungsmaßnahmen}
         \begin{block}{Vergleich AppArmor \& Docker}
-                \begin{itemize}
+                \begin{itemize}[<+->]
                         \item blabla... 
                 \end{itemize}
         \end{block}
@@ -95,7 +84,7 @@
 
 \begin{frame}{Präventive Verteidigungsmaßnahmen}
         \begin{block}{Fazit}
-                \begin{itemize}
+                \begin{itemize}[<+->]
                         \item blabla... 
                 \end{itemize}
         \end{block}
