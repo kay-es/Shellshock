@@ -164,4 +164,13 @@ sympy-plots-for-*.tex/
 *.xdy
 *.tdo
 
+### Vim ###
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+
 presentation_shellshock_proseminar.pdf
+
