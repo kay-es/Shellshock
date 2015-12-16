@@ -36,14 +36,6 @@
 \end{frame}
 
 \begin{frame}{Präventive Verteidigungsmaßnahmen}
-        \begin{block}{Sandboxing}
-                \begin{itemize}
-                        \item blablabla... 
-                \end{itemize}
-        \end{block}
-\end{frame}
-
-\begin{frame}{Präventive Verteidigungsmaßnahmen}
         \begin{block}{AppArmor}
                 \begin{itemize}
                         \item Einfache Umsetzung von Mandatory Access Control (MAC)
@@ -56,24 +48,40 @@
 \end{frame}
 
 \begin{frame}{Präventive Verteidigungsmaßnahmen}
+        \begin{block}{Sandboxing}
+                \begin{itemize}
+                        \item blablabla... 
+                \end{itemize}
+        \end{block}
+\end{frame}
+
+\begin{frame}{Präventive Verteidigungsmaßnahmen}
         \begin{block}{Docker}
                 \begin{itemize}
                         \item Was sind Container?
+                        \pause
                         \begin{itemize}
                                 \item \textbf{\gqq{$\sim$chroot on steroids}}
+                                \pause
                                 \item Ein Set von Prozessen
+                                \pause
                                 \item Isoliert\footnotemark vom Rest der Maschine
+                                \pause
                                 \item Per \textit{namespaces} eigene private Resourcen
+                                \pause
                                 \item Per \textit{cgroups} Limitierung von Resourcen möglich
                         \end{itemize}
+                        \pause
                         \item Container: Gibt es seit Jahrzehnten
+                        \pause
                         \item LXC (Linux Container): Gibt es seit Jahren
+                        \pause
                         \item $\rightarrow$ Docker vereinfacht die Verwendung von LXC 
                 \end{itemize}
         \end{block}
 
         \setbeamerfont{footnote}{size=\tiny}
-        \footnotetext{This is my footnote!}
+        \footnotetext{Teilen sich den Kernel}
         \setbeamerfont{footnote}{size=\footnotesize}
 \end{frame}
 
