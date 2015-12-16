@@ -8,9 +8,13 @@
                 \begin{itemize}[<+->]
                         \item Experten: Sicherheitslücken nicht zu 100\% ausschließbar
                         \item Können aber durch mehrschichtige Sicherheitsstrukturen migriert werden
-                        \item Torvalds: \gqq{The only real solution to security is to admit that bugs happen, and then mitigate them by having multiple layers, so if you have a hole in one component, the next layer will catch the issue.} 
+                        \item Torvalds: \gqq{The only real solution to security is to admit that bugs happen, and then mitigate them by having multiple layers, so if you have a hole in one component, the next layer will catch the issue.} \footnotemark 
                 \end{itemize}
         \end{block}
+        
+        \setbeamerfont{footnote}{size=\tiny}
+        \footnotetext{Quelle: http://www.eweek.com/enterprise-apps/linus-torvalds-talks-linux-security-at-linuxcon.html\\(Besucht am 13.12.2015)l}
+        \setbeamerfont{footnote}{size=\footnotesize}
 \end{frame}
 
 \begin{frame}{Präventive Verteidigungsmaßnahmen}
@@ -46,6 +50,9 @@
                         \item Verschiedene Möglichkeiten der Virtualisierung
                 \end{itemize}
         \end{block}
+\end{frame}
+
+\begin{frame}{Präventive Verteidigungsmaßnahmen}
         \begin{figure}
                 \centering
                 \includegraphics[width=0.5\textwidth]{assets/priv_rings}
@@ -77,7 +84,9 @@
 \begin{frame}{Präventive Verteidigungsmaßnahmen}
         \begin{block}{Vergleich AppArmor \& Docker}
                 \begin{itemize}[<+->]
-                        \item blabla... 
+                        \item \gqq{LXC is not yet secure. If I want real security I will use KVM.} Ben Berrange
+                        \item \gqq{Containers do not contain.} Dan Walsh
+                        \item \dots
                 \end{itemize}
         \end{block}
 \end{frame}
@@ -85,7 +94,9 @@
 \begin{frame}{Präventive Verteidigungsmaßnahmen}
         \begin{block}{Fazit}
                 \begin{itemize}[<+->]
-                        \item blabla... 
+                        \item Docker alleine ist zum jetzigen Zeitpunkt nicht sicher
+                        \item $\rightarrow$ Kombination mit z.B. AppArmor
+                        \item \dots
                 \end{itemize}
         \end{block}
 \end{frame}
