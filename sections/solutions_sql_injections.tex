@@ -2,24 +2,25 @@
 
 \subsection{SQL-Injections}
 \begin{frame}{SQL-Injections}
-\begin{block}
+\begin{block}{Generelles}
 \begin{itemize}
-	\item fakt
-	\item fakt
-	\item fakt
+	\item Seit Einführung von Datenbanken relevant
+	\item Machen ca. 69\% aller Angriffe aus \footnotemark
+	\item Benutzereingaben werden in der SQL-Abfrage missinterpretiert
 \end{itemize}
 \end{block}
+\setbeamerfont{footnote}{size=\tiny}
+\footnotetext{Stand: Q2 2012; Quelle: http://www.zdnet.com/article/sql-injection-attacks-up-69/}
+\setbeamerfont{footnote}{size=\footnotesize}
 \end{frame}
 
-\begin{frame}{}
-\begin{block}
-\begin{lstlisting}
-	"SELECT * FROM users WHERE userID =" + userInput
-\end{lstlisting}}
+\begin{frame}{Klassische Angriffe}
+\begin{block}{Numerische SQL-Abfrage}
+	SELECT * FROM Users WHERE ID = \textcolor{red}{\textbf{1 OR 1=1}}
 \end{block}
-\begin{lstlisting}
-	"SELECT * FROM users WHERE userID =" + userInput
-\end{lstlisting}
+\begin{block}{SQL-Abfrage mit String-Wert}
+	SELECT * FROM Users WHERE name = "{}\textcolor{red}{\textbf{nickname"{} OR 1=1- -}}"{}
+\end{block}
 \end{frame}
 
 
@@ -27,58 +28,74 @@
 \begin{frame}{Maßnahmen gegen SQL-Injections}
 \begin{block}{Lösungsansätze}
 \begin{itemize}
-\item Black- und Whitelisting
+\item Blacklisting 
+\item Whitelisting
 \item Escaping
-\item Second order SQL-Injection
-\item Prepared statements and bind variables
+\item Prepared Statements \& Bind Variablen
 \end{itemize}
 \end{block}
 \end{frame}
 
-\subsection{Black- und Whitelisting}
-\begin{frame}{Black- und Whitelisting}
-\begin{block}{Möglichkeiten}
+\begin{frame}{Blacklisting}
+\begin{block}{Vorgehen}
 \begin{itemize}
-\item Black- und Whitelisting
-\item Escaping
-\item Second order SQL-Injection
-\item Prepared statements and bind variables
+\item Benutzereingaben werden gefiltert
+	\begin{itemize}
+	\item Metazeichen von der Eingabe entfernen (z.B.: ", ;, ', -, \%)
+	\item Getrimmter Substring wird im SQL-Request verwendet
+	\end{itemize}
+\end{itemize}
+\end{block}
+\begin{block}{Problematik \& Sicherheit}	
+\begin{itemize}
+\item Vergessen von einem einzigen Zeichen kann ganzen Ansatz zerstören
 \end{itemize}
 \end{block}
 \end{frame}
 
-\subsection{Escaping}
+\begin{frame}{Whitelisting}
+\begin{block}{Vorgehen}
+\begin{itemize}
+	\item Nur gültige Zeichen zulassen
+	\item Validierung \& Überprüfung mittels regulärem Ausdruck
+\end{itemize}	
+\end{block}
+\begin{block}{Problematik \& Sicherheit}	
+\begin{itemize}
+\item Herr O'Neil kann sich nicht mehr mit seinem Namen registrieren
+\end{itemize}
+\end{block}
+\end{frame}
+
+
 \begin{frame}{Escaping}
-\begin{block}{Möglichkeiten}
+\begin{block}{Vorgehen}
 \begin{itemize}
-\item Black- und Whitelisting
-\item Escaping
-\item Second order SQL-Injection
-\item Prepared statements and bind variables
+\item escape(o'connor) $\Rightarrow$ o'connor
+\item Funktioniert nur bei String-Eingaben
+\end{itemize}
+\end{block}
+\begin{block}{Problematik \& Sicherheit}
+\begin{itemize}
+\item escape-Funktion muss konsistent und überall benutzt werden (insert, update, delete)	
+\item Ermöglicht sonst Second Order SQL-Injections
 \end{itemize}
 \end{block}
 \end{frame}
 
-\subsection{Second order SQL-Injection}
-\begin{frame}{Second order SQL-Injection}
-\begin{block}{Möglichkeiten}
+\begin{frame}{Prepared Statements \& Bind Variablen}
+\begin{block}{Vorgehen}
 \begin{itemize}
-\item Black- und Whitelisting
-\item Escaping
-\item Second order SQL-Injection
-\item Prepared statements and bind variables
+\item Nutzen von Platzhaltern (z.B.: ?, :name, etc.) anstatt Eingaben direkt in den Request zu schreiben
+\item SQL-Request wird zuerst kompiliert und danach erst Parameter eingesetzt
 \end{itemize}
 \end{block}
-\end{frame}
-
-\subsection{Prepared statements and bind variables}
-\begin{frame}{Prepared statements and bind variables}
-\begin{block}{Möglichkeiten}
+\begin{block}{Problematik \& Sicherheit}
 \begin{itemize}
-\item Black- und Whitelisting
-\item Escaping
-\item Second order SQL-Injection
-\item Prepared statements and bind variables
+	\item Durch Platzhalter kann der Angreifer die SQL-Abfrage nicht verändern
+	\item Die SQL-Abfrage kann nicht missinterpretiert werden
+	\item Fast unmöglich die Abfrage zu manipulieren
+	\item Bester Ansatz, um SQL-Injections zu verhindern
 \end{itemize}
 \end{block}
 \end{frame}
