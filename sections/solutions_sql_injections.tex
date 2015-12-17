@@ -1,6 +1,5 @@
 \section{Maßnahmen gegen SQL-Injections}
 
-\subsection{SQL-Injections}
 \begin{frame}{SQL-Injections}
 \begin{block}{Generelles}
 \begin{itemize}
@@ -19,12 +18,11 @@
 	SELECT * FROM Users WHERE ID = \textcolor{red}{\textbf{1 OR 1=1}}
 \end{block}
 \begin{block}{SQL-Abfrage mit String-Wert}
-	SELECT * FROM Users WHERE name = "{}\textcolor{red}{\textbf{nickname"{} OR 1=1- -}}"{}
+	SELECT * FROM Users WHERE name = '{}\textcolor{red}{\textbf{nickname'{} OR 1=1- -}}'{}
 \end{block}
 \end{frame}
 
 
-\subsection{Maßnahmen gegen SQL-Injections}
 \begin{frame}{Maßnahmen gegen SQL-Injections}
 \begin{block}{Lösungsansätze}
 \begin{itemize}
@@ -42,14 +40,47 @@
 \item Benutzereingaben werden gefiltert
 	\begin{itemize}
 	\item Metazeichen von der Eingabe entfernen (z.B.: ", ;, ', -, \%)
-	\item Getrimmter Substring wird im SQL-Request verwendet
+	\item Getrimmter Substring wird im SQL-Query verwendet
+	\end{itemize}
+\end{itemize}
+\end{block}
+\begin{block}{Beispiel}	
+	remove\_metachar("{}\textcolor{red}{\textbf{nickname'{} OR 1=1- -}}{}") $\Rightarrow$ "{}\textcolor{red}{\textbf{nicknameOR1=1}}{}" \\
+	$\Rightarrow$ SELECT * FROM Users WHERE name = '{}\textcolor{red}{\textbf{nicknameOR1=1}}'{}
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Blacklisting}
+\begin{block}{Vorgehen}
+\begin{itemize}
+\item Benutzereingaben werden gefiltert
+	\begin{itemize}
+	\item Metazeichen von der Eingabe entfernen (z.B.: ", ;, ', -, \%)
+	\item Getrimmter Substring wird im SQL-Query verwendet
 	\end{itemize}
 \end{itemize}
 \end{block}
 \begin{block}{Problematik \& Sicherheit}	
 \begin{itemize}
-\item Vergessen von einem einzigen Zeichen kann kompletten Lösungsansatz zerstören
+\item Vergessen von einem einzigen Metacharakter kann kompletten Lösungsansatz zerstören
 \end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Whitelisting}
+\begin{block}{Vorgehen}
+\begin{itemize}
+	\item Nur gültige Zeichen zulassen
+	\item Validierung \& Überprüfung mittels regulärem Ausdruck
+\end{itemize}	
+\end{block}
+\begin{block}{Beispiel}	
+	Whitelist: [0,9]* \\
+	check\_whitelist("{}\textcolor{red}{\textbf{1 OR 1=1}}{}") $\mapsto$ "{}\textcolor{red}{\textbf{ungültige Eingabe}}{}" \\
+	trim\_whitelist("{}\textcolor{red}{\textbf{1 OR 1=1}}{}") $\mapsto$ "{}\textcolor{red}{\textbf{ungültige Eingabe}}{}" \\
+	$\Rightarrow$ SELECT * FROM Users WHERE ID = \textcolor{red}{\textbf{1}}
 \end{block}
 \end{frame}
 
@@ -71,13 +102,26 @@
 \begin{frame}{Escaping}
 \begin{block}{Vorgehen}
 \begin{itemize}
-\item escape(o'connor) $\Rightarrow$ o'connor
+\item Benutzereingabe wird so umgeformt, dass die Datenbank sie richtig interpretieren kann
+\item Funktioniert nur bei String-Eingaben
+\end{itemize}
+\end{block}
+\begin{block}{Beispiel}
+	escape("{}\textcolor{red}{\textbf{O'Neil}}"{}) $\mapsto$ "{}\textcolor{red}{\textbf{O"{}Neil}}"{} \\
+	$\Rightarrow$ Datenbank interpretiert "{} als einfaches ' und nicht mehr als Beginn bzw. Ende eines Strings
+\end{block}
+\end{frame}
+
+\begin{frame}{Escaping}
+\begin{block}{Vorgehen}
+\begin{itemize}
+\item Benutzereingabe wird so umgeformt, dass die Datenbank sie richtig interpretieren kann
 \item Funktioniert nur bei String-Eingaben
 \end{itemize}
 \end{block}
 \begin{block}{Problematik \& Sicherheit}
 \begin{itemize}
-\item escape-Funktion muss konsistent und überall benutzt werden (insert, update, delete)	
+\item escape()-Funktion muss konsistent und überall (bei INSERT, UPDATE, DELETE, etc.) angewendet werden
 \item Ermöglicht sonst Second Order SQL-Injections
 \end{itemize}
 \end{block}
@@ -86,8 +130,23 @@
 \begin{frame}{Prepared Statements \& Bind Variablen}
 \begin{block}{Vorgehen}
 \begin{itemize}
-\item Nutzen von Platzhaltern (z.B.: ?, :name, etc.) anstatt Eingaben direkt in den Request zu schreiben
-\item SQL-Request wird zuerst kompiliert und danach erst Parameter eingesetzt
+\item Nutzen von Platzhaltern (z.B.: ?, :name, etc.) anstatt Eingaben direkt in der Datenbank-Abfrage zu verwenden
+\item Query wird zuerst vorbereitet und danach erst die Parameter eingesetzt
+\end{itemize}
+\end{block}
+\begin{block}{Beispiel}
+prep\_stat = "{}SELECT * FROM Users WHERE ID = \textcolor{red}{\textbf{?}} AND name = \textcolor{red}{\textbf{?}}"{}; \\
+prep\_stat.setPara(1, "{}\textcolor{red}{\textbf{1 OR 1=1}}{}"); \\
+prep\_stat.setPara(2, "{}\textcolor{red}{\textbf{nickname'{} OR 1=1- -}}{}"); \\
+prep\_stat.exec\_query;
+\end{block}
+\end{frame}
+
+\begin{frame}{Prepared Statements \& Bind Variablen}
+\begin{block}{Vorgehen}
+\begin{itemize}
+\item Nutzen von Platzhaltern (z.B.: ?, :name, etc.) anstatt Eingaben direkt in der Datenbank-Abfrage zu verwenden
+\item Query wird zuerst vorbereitet und danach erst die Parameter eingesetzt
 \end{itemize}
 \end{block}
 \begin{block}{Problematik \& Sicherheit}
@@ -95,7 +154,7 @@
 	\item Durch Platzhalter kann der Angreifer die SQL-Abfrage nicht verändern
 	\item Die SQL-Abfrage kann nicht missinterpretiert werden
 	\item Fast unmöglich die Abfrage zu manipulieren
-	\item Bester Ansatz, um SQL-Injections zu verhindern
+	\item Bester Ansatz, um SQL-Injections zu vermeiden
 \end{itemize}
 \end{block}
 \end{frame}
