@@ -2,7 +2,7 @@
 
 \begin{frame}{SQL-Injections}
 \begin{block}{Generelles}
-\begin{itemize}
+\begin{itemize}[<+->]
 	\item Stellen seit Einführung von Datenbanken ein Sicherheitsrisiko dar
 	\item Machen ca. 69\% aller Angriffe aus \footnotemark
 	\item Benutzereingaben werden in der SQL-Abfrage missinterpretiert
@@ -25,7 +25,7 @@
 
 \begin{frame}{Maßnahmen gegen SQL-Injections}
 \begin{block}{Lösungsansätze}
-\begin{itemize}
+\begin{itemize}[<+->]
 \item Blacklisting 
 \item Whitelisting
 \item Escaping
@@ -36,7 +36,7 @@
 
 \begin{frame}{Blacklisting}
 \begin{block}{Vorgehen}
-\begin{itemize}
+\begin{itemize}[<+->]
 \item Benutzereingaben werden gefiltert
 	\begin{itemize}
 	\item Metazeichen von der Eingabe entfernen (z.B.: ", ;, ', -, \%)
@@ -62,7 +62,7 @@
 \end{itemize}
 \end{block}
 \begin{block}{Problematik \& Sicherheit}	
-\begin{itemize}
+\begin{itemize}[<+->]
 \item Vergessen von einem einzigen Metacharakter kann kompletten Lösungsansatz zerstören
 \end{itemize}
 \end{block}
@@ -71,15 +71,15 @@
 
 \begin{frame}{Whitelisting}
 \begin{block}{Vorgehen}
-\begin{itemize}
+\begin{itemize}[<+->]
 	\item Nur gültige Zeichen zulassen
 	\item Validierung \& Überprüfung mittels regulärem Ausdruck
 \end{itemize}	
 \end{block}
 \begin{block}{Beispiel}	
 	Whitelist: [0,9]* \\
-	check\_whitelist("{}\textcolor{red}{\textbf{1 OR 1=1}}{}") $\mapsto$ "{}\textcolor{red}{\textbf{ungültige Eingabe}}{}" \\
-	trim\_whitelist("{}\textcolor{red}{\textbf{1 OR 1=1}}{}") $\mapsto$ "{}\textcolor{red}{\textbf{ungültige Eingabe}}{}" \\
+	check\_whitelist("{}\textcolor{red}{\textbf{1 OR 1=1}}{}") $\mapsto$ \textcolor{red}{\textbf{ungültige Eingabe}} \\
+	trim\_whitelist("{}\textcolor{red}{\textbf{1 OR 1=1}}{}") $\mapsto$ \textcolor{red}{\textbf{1}} \\
 	$\Rightarrow$ SELECT * FROM Users WHERE ID = \textcolor{red}{\textbf{1}}
 \end{block}
 \end{frame}
@@ -92,7 +92,7 @@
 \end{itemize}	
 \end{block}
 \begin{block}{Problematik \& Sicherheit}	
-\begin{itemize}
+\begin{itemize}[<+->]
 \item Herr O'Neil kann sich nicht mehr mit seinem Namen registrieren
 \end{itemize}
 \end{block}
@@ -101,7 +101,7 @@
 
 \begin{frame}{Escaping}
 \begin{block}{Vorgehen}
-\begin{itemize}
+\begin{itemize}[<+->]
 \item Benutzereingabe wird so umgeformt, dass die Datenbank sie richtig interpretieren kann
 \item Funktioniert nur bei String-Eingaben
 \end{itemize}
@@ -120,7 +120,7 @@
 \end{itemize}
 \end{block}
 \begin{block}{Problematik \& Sicherheit}
-\begin{itemize}
+\begin{itemize}[<+->]
 \item escape()-Funktion muss konsistent und überall (bei INSERT, UPDATE, DELETE, etc.) angewendet werden
 \item Ermöglicht sonst Second Order SQL-Injections
 \end{itemize}
@@ -129,7 +129,7 @@
 
 \begin{frame}{Prepared Statements \& Bind Variablen}
 \begin{block}{Vorgehen}
-\begin{itemize}
+\begin{itemize}[<+->]
 \item Nutzen von Platzhaltern (z.B.: ?, :name, etc.) anstatt Eingaben direkt in der Datenbank-Abfrage zu verwenden
 \item Query wird zuerst vorbereitet und danach erst die Parameter eingesetzt
 \end{itemize}
@@ -150,7 +150,7 @@ prep\_stat.exec\_query;
 \end{itemize}
 \end{block}
 \begin{block}{Problematik \& Sicherheit}
-\begin{itemize}
+\begin{itemize}[<+->]
 	\item Durch Platzhalter kann der Angreifer die SQL-Abfrage nicht verändern
 	\item Die SQL-Abfrage kann nicht missinterpretiert werden
 	\item Fast unmöglich die Abfrage zu manipulieren
