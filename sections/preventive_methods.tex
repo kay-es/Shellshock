@@ -72,7 +72,7 @@
                 \begin{itemize}[<+->]
                         \item Was sind Container?
                         \begin{itemize}[<+->]
-                                \item \textbf{\gqq{$\sim$chroot on steroids}}
+                                \item \textbf{\gqq{$\sim$chroot on steroids}}\footnotemark
                                 \item Ein Set von Prozessen
                                 \item Isoliert\footnotemark vom Rest der Maschine
                                 \item Per \textit{namespaces} eigene private Resourcen
@@ -83,6 +83,10 @@
                         \item $\rightarrow$ Docker vereinfacht die Verwendung von LXC 
                 \end{itemize}
         \end{block}
+
+        \setbeamerfont{footnote}{size=\tiny}
+        \footnotetext{Quelle: http://blog.terminal.com/docker-without-containers-pulldocker/ (Besuchhtmlt am 17.12.2015)l}
+        \setbeamerfont{footnote}{size=\footnotesize}
 
         \setbeamerfont{footnote}{size=\tiny}
         \footnotetext{Teilen sich den Kernel}
