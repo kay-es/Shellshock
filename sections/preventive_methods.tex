@@ -6,7 +6,7 @@
 \begin{frame}{Präventive Verteidigungsmaßnahmen}
   \begin{block}{Mehrschichtige Sicherheitsstrukturen}
     \begin{itemize}[<+->]
-      \item Experten: Sicherheitslücken \textbf{nicht} zu 100\% ausschließbar
+      \item Sicherheitslücken \textbf{nicht} zu 100\% ausschließbar
       \item Können aber durch mehrschichtige Sicherheitsstrukturen abschwächt werden
       \item Torvalds: \gqq{The only real solution to security is to admit that bugs happen, and then mitigate them by having multiple layers, so if you have a hole in one component, the next layer will catch the issue.} \footnotemark
     \end{itemize}
@@ -15,6 +15,25 @@
   \setbeamerfont{footnote}{size=\tiny}
   \footnotetext{Quelle: http://www.eweek.com/enterprise-apps/linus-torvalds-talks-linux-security-at-linuxcon.html (Besucht am 13.12.2015)}
   \setbeamerfont{footnote}{size=\footnotesize}
+\end{frame}
+
+\begin{frame}{Präventive Verteidigungsmaßnahmen}
+  \begin{block}{Wie kann man diese mehrschichtige Sicherheitsstrukturen bilden?}
+    \begin{itemize}[<+->]
+      \item Zugriffskontrolle
+      \begin{itemize}[<+->]
+        \item AppArmor
+        \item SELinux
+        \item Grsecurity
+      \end{itemize}
+      \item Sandboxing
+      \begin{itemize}[<+->]
+        \item Container
+        \item LXC
+        \item Docker
+      \end{itemize}
+    \end{itemize}
+  \end{block}
 \end{frame}
 
 \begin{frame}{Präventive Verteidigungsmaßnahmen}
@@ -29,6 +48,12 @@
         \item Role-based Access Control (RBAC)
       \end{itemize}
     \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Präventive Verteidigungsmaßnahmen}
+  \begin{block}{Vergleich Zugriffskontrollen (MAC, DAC, RBAC)}
+    HIER VERGLEICHEN!
   \end{block}
 \end{frame}
 
@@ -72,9 +97,9 @@
     \begin{itemize}[<+->]
       \item Was sind Container?
       \begin{itemize}[<+->]
-        \item \textbf{\gqq{$\sim$chroot on steroids}}\footnotemark
         \item Ein Set von Prozessen
         \item Isoliert\footnotemark vom Rest der Maschine
+        \item \textbf{\gqq{$\sim$chroot on steroids}}\footnotemark
         \item Per \textit{namespaces} eigene private Resourcen
         \item Per \textit{cgroups} Limitierung von Resourcen möglich
       \end{itemize}
