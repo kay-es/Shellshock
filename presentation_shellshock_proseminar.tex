@@ -121,6 +121,21 @@
 \end{figure}
 \end{frame}
 
+\begin{frame}{Ungepatchte Bash}
+  \begin{block}{Angriff in der Praxis}
+    \begin{itemize}[<+->]
+      \item In der Praxis nicht ganz so einfach durchführbar,
+      \item da ein Angreifer für gewöhnlich keinen Zugriff auf die Shell hat
+      \item Allerdings tauschen viele Anwendungen Informationen mittels Variablen über die Shell aus
+      \begin{itemize}[<+->]
+        \item Apache (Webserver): Für die Ausführung von cgi-Skripten
+        \item Postfix (Mailserver): Um E-Mails mit procmail zu filtern
+      \end{itemize}
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+
 \section[Vorbeugung Shellshock?]{Hätte man Shellshock vorbeugen können?}
 \begin{frame}{Vorbeugung von Shellshock möglich?}
 \begin{center}

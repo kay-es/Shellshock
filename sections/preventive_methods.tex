@@ -72,30 +72,34 @@
       \item Schutzziele: Vertraulichkeit, Integrität und Verfügbarkeit
     \end{itemize}
   \end{block}
-\end{frame}
 
-\begin{frame}{Präventive Verteidigungsmaßnahmen}
-  \begin{block}{Sandboxing}
+  \begin{block}{Hätte AppArmor vor Shellshock geschützt?}
     \begin{itemize}[<+->]
-      \item Ziel: Abgrenzung von Software und Hardware
-      \item Komplexität reduzieren (in einer Sandbox läuft gewöhnlich genau eine Anwendung)
-      \item Schnell \& einfach wiederherstellbar (Disaster Recovery)
-      \item Einsatz: BIND unter UNIX, Google's Browser Chrome, ...
-      \item Verschiedene Möglichkeiten der Virtualisierung
+      \item Ein Angreifer hätte dennoch Zugriff auf das System erhalten
+      \item Rechte wären allerdings stark eingeschränkt
+      \item Um schwerwiegenden Schaden auszurichten wären wahrscheinlich weitere Exploits nötig gewesen
     \end{itemize}
   \end{block}
 \end{frame}
 
 \begin{frame}{Präventive Verteidigungsmaßnahmen}
-  \begin{figure}
-    \centering
-    \includegraphics[width=0.55\textwidth]{assets/hypervisor}
-    \caption{Hypervisor Typen \footnotemark}
-  \end{figure}
-
-  \setbeamerfont{footnote}{size=\tiny}
-  \footnotetext{Quelle: http://www.virtzone.net/the-difference-between-a-type-2-hypervisor-and-a-type-1-hypervisor/ (Besucht am 13.12.2015)}
-  \setbeamerfont{footnote}{size=\footnotesize}
+  \begin{block}{Sandboxing}
+    \begin{itemize}[<+->]
+      \item Prinzip: Eine Anwendungen hat keinen Zugriff auf:
+      \begin{itemize}[<+->]
+        \item eine andere Anwendungen
+        \item das System
+      \end{itemize}
+      \item Vorteile:
+      \begin{itemize}[<+->]
+        \item Anwendungen isoliert voneinander (in einer Sandbox läuft gewöhnlich genau eine Anwendung)
+        \item Schnell \& einfach wiederherstellbar (Disaster Recovery)
+        \item Übertragbarkeit auf andere Systeme
+        \item Geringer zusatzlicher Ressourcenverbrauch
+      \end{itemize}
+      \item Einsatz: BIND unter UNIX, Google's Browser Chrome, ...
+    \end{itemize}
+  \end{block}
 \end{frame}
 
 \begin{frame}{Präventive Verteidigungsmaßnahmen}
@@ -105,9 +109,13 @@
       \begin{itemize}[<+->]
         \item Ein Set von Prozessen
         \item Isoliert\footnotemark vom Rest der Maschine
-        \item \textbf{\gqq{$\sim$chroot on steroids}}\footnotemark
-        \item Per \textit{namespaces} eigene private Resourcen
-        \item Per \textit{cgroups} Limitierung von Resourcen möglich
+        \item Eigene private Resourcen (\textit{namespaces})
+        \item Limitierung von Resourcen möglich (\textit{cgroups})
+      \end{itemize}
+      \item Unterschied zu Virtualisierung?
+      \begin{itemize}[<+->]
+        \item VM beinhaltet neben der Anwendung auch das Betriebsystem
+        \item Container beinhalten nur die Anwendung und sind damit um einiges \gqq{leichter}
       \end{itemize}
       \item Container: Gibt es seit Jahrzehnten
       \item LXC (Linux Container): Gibt es seit Jahren
@@ -116,7 +124,6 @@
   \end{block}
 
   \setbeamerfont{footnote}{size=\tiny}
-  \footnotetext[3]{Quelle: http://blog.terminal.com/docker-without-containers-pulldocker/ (Besucht am 17.12.2015)}
   \footnotetext{Teilen sich den Kernel}
   \setbeamerfont{footnote}{size=\footnotesize}
 \end{frame}
