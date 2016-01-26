@@ -3,9 +3,9 @@
 \begin{frame}{SQL-Injections}
 \begin{block}{Generelles}
 \begin{itemize}[<+->]
+	\item Benutzereingaben werden in der SQL-Abfrage missinterpretiert
 	\item Stellen seit Einführung von Datenbanken ein Sicherheitsrisiko dar
 	\item Machen Großteil aller Webangriffe aus
-	\item Benutzereingaben werden in der SQL-Abfrage missinterpretiert
 \end{itemize}
 \end{block}
 \setbeamerfont{footnote}{size=\tiny}
@@ -129,8 +129,10 @@
 \begin{frame}{Prepared Statements \& Bind Variablen}
 \begin{block}{Vorgehen}
 \begin{itemize}[<+->]
-\item Nutzen von Platzhaltern (z.B.: ?, :name, etc.) anstatt Eingaben direkt in der Datenbank-Abfrage zu verwenden
-\item Query wird zuerst vorbereitet und danach erst die Parameter eingesetzt
+	\item Nutzen von Platzhaltern (z.B.: ?, :name, etc.) anstatt Eingaben direkt in der Datenbank-Abfrage zu verwenden $\Rightarrow$ Angreifer kann SQL-Abfrage nicht verändern
+
+	\item Query wird zuerst vorbereitet und danach erst die Parameter eingesetzt $\Rightarrow$ SQL-Abfrage kann nicht missinterpretiert werden
+
 \end{itemize}
 \end{block}
 \begin{block}{Beispiel}
@@ -144,14 +146,13 @@ prep\_stat.exec\_query;
 \begin{frame}{Prepared Statements \& Bind Variablen}
 \begin{block}{Vorgehen}
 \begin{itemize}
-\item Nutzen von Platzhaltern (z.B.: ?, :name, etc.) anstatt Eingaben direkt in der Datenbank-Abfrage zu verwenden
-\item Query wird zuerst vorbereitet und danach erst die Parameter eingesetzt
+	\item Nutzen von Platzhaltern (z.B.: ?, :name, etc.) anstatt Eingaben direkt in der Datenbank-Abfrage zu verwenden $\Rightarrow$ Angreifer kann SQL-Abfrage nicht verändern
+
+	\item Query wird zuerst vorbereitet und danach erst die Parameter eingesetzt $\Rightarrow$ SQL-Abfrage kann nicht missinterpretiert werden
 \end{itemize}
 \end{block}
 \begin{block}{Problematik \& Sicherheit}
 \begin{itemize}[<+->]
-	\item Durch Platzhalter kann der Angreifer die SQL-Abfrage nicht verändern
-	\item Die SQL-Abfrage kann nicht missinterpretiert werden
 	\item Fast unmöglich die Abfrage zu manipulieren
 	\item Bester Ansatz, um SQL-Injections zu vermeiden
 \end{itemize}
