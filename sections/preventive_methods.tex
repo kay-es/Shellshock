@@ -52,15 +52,29 @@
 \end{frame}
 
 \begin{frame}{Vergleich Zugriffskontrollen}
+  \begin{block}{Vergleich}
+    \begin{itemize}[<+->]
+      \item DAC
+      \begin{itemize}[<+->]
+        \item Eigentümer entscheidet wer auf das Objekt zugreifen kann
+        \item Skaliert schlecht, schwer zu warten
+      \end{itemize}
+      \item RBAC
+      \begin{itemize}[<+->]
+        \item Subjekte werden Rollen zugewiesen
+        \item Zugriffskontrolle über die Rolle
+      \end{itemize}
+      \item MAC
+      \begin{itemize}[<+->]
+        \item Zugriffskontrolle über sog. Labels oder Tags
+        \item Skaliert gut, am sichersten
+      \end{itemize}
+    \end{itemize}
+  \end{block}
   \begin{figure}
     \centering
-    \includegraphics[width=0.55\textwidth]{assets/access_control}
-    \caption{DAC, RBAC, MAC \footnotemark}
+    \includegraphics[width=0.75\textwidth]{assets/access_control2}
   \end{figure}
-
-  \setbeamerfont{footnote}{size=\tiny}
-  \footnotetext{Quelle: http://www.edn.com/Home/PrintView?contentItemId=4218591 (Besucht am 13.01.2016)}
-  \setbeamerfont{footnote}{size=\footnotesize}
 \end{frame}
 
 \begin{frame}{Präventive Verteidigungsmaßnahmen}
