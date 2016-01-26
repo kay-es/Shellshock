@@ -75,6 +75,19 @@
 \titlepage
 \end{frame}
 
+\begin{frame}{Motivation}
+\begin{block}{Ausmaß des Exploits}
+\begin{itemize}[<+->]
+\item Bash Standard-Shell bei vielen unixoiden Systemen
+\item Großteil der Webserver laufen unter unixoiden Systemen
+\item Weltweit waren hunderte Millionen Computer betroffen
+\begin{itemize}
+  \item Unter anderem Server von Yahoo, Winzip und Lycos
+\end{itemize}
+\end{itemize}
+\end{block}
+\end{frame}
+
 %table of contents
 \begin{frame}{Agenda}
 \tableofcontents
@@ -90,20 +103,6 @@
     \item CVE-Nummern CVE-2014-6271, -7169, -7168, -7187, -6277, -6278
     \item 3 Patches bis zur Behebung
   \end{itemize}
-\end{block}
-\end{frame}
-
-\begin{frame}{Shellshock}
-\begin{block}{Ausmaß des Exploits}
-\begin{itemize}[<+->]
-\item Bash Standard-Shell bei vielen unixoiden Systemen
-\item Großteil der Webserver laufen unter unixoiden Systemen
-\item Weltweit waren hunderte Millionen Computer betroffen
-\begin{itemize}
-  \item Unter anderem Server von Yahoo, Winzip und Lycos
-\end{itemize}
-\item Forscher halten die Sicherheitslücke für gravierender als Heartbleed
-\end{itemize}
 \end{block}
 \end{frame}
 
@@ -124,9 +123,8 @@
 \begin{frame}{Ungepatchte Bash}
   \begin{block}{Angriff in der Praxis}
     \begin{itemize}[<+->]
-      \item In der Praxis nicht ganz so einfach durchführbar,
-      \item da ein Angreifer für gewöhnlich keinen Zugriff auf die Shell hat
-      \item Allerdings tauschen viele Anwendungen Informationen mittels Variablen über die Shell aus
+      \item Da ein Angreifer für gewöhnlich keinen Zugriff auf die Shell hat \Rightarrow in der Praxis nicht ganz so einfach durchführbar
+      \item Viele Anwendungen tauschen Informationen mittels Variablen über die Shell aus
       \begin{itemize}[<+->]
         \item Apache (Webserver): Für die Ausführung von cgi-Skripten
         \item Postfix (Mailserver): Um E-Mails mit procmail zu filtern
