@@ -65,6 +65,8 @@
 \bibhang1em
 \setcounter{tocdepth}{1}
 
+\newcommand{\tab}[1]{\hspace{.2\textwidth}\rlap{#1}}
+
 \begin{document}
 
 % change the following line to "ngerman" for German style date and logos
@@ -76,6 +78,13 @@
 \end{frame}
 
 \begin{frame}{Motivation}
+\begin{block}{Was war möglich?}
+\begin{itemize}[<+->]
+\item Beliebiger Code ausführbar 
+\end{itemize}
+  $\Rightarrow$ Volle Kontrolle über das System
+\end{block}
+
 \begin{block}{Ausmaß des Exploits}
 \begin{itemize}[<+->]
 \item Bash Standard-Shell bei vielen unixoiden Systemen
